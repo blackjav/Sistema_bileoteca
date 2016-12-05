@@ -30,8 +30,7 @@ public class MongoDBCrudExample {
       mongoClient = new MongoClient();
       MongoDatabase db = mongoClient.getDatabase("prueba");
  
-      MongoCollection<Document> collection = db
-          .getCollection("inventory");
+      MongoCollection<Document> collection = db.getCollection("inventory");
  
       // Mostrar todos
       System.out.println("+++++++++++++++++++++++++	MUESTRA TODOS LOS ELEMENTOS DE LA COLECCIÓN++++++++++++++++++++++++++++++++++");

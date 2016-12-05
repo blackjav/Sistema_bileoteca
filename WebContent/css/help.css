@@ -1,0 +1,16 @@
+.circular { 
+	width: 200px; 
+	height: 200px; 
+	border-radius: 150px; 
+	-webkit-border-radius: 150px; 
+	-moz-border-radius: 150px; 
+	background: url(../imagenes/user.jpg) no-repeat; 
+}
+body{
+/* 	background: purple; */
+}
+
+a:link   
+{   
+ text-decoration:none;   
+}   
