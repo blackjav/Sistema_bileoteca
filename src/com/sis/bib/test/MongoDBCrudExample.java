@@ -269,8 +269,7 @@ public class MongoDBCrudExample {
     return resultDocument;
   }
  
-  public static DeleteResult deleteOneFromCollection(
-      final MongoCollection<Document> collection, final String id) {
+  public static DeleteResult deleteOneFromCollection( final MongoCollection<Document> collection, final String id) {
     DeleteResult resultDocument = null;
  
     // findOneAndDelete from MongoDB
@@ -294,8 +293,8 @@ public class MongoDBCrudExample {
   }
  
   //<TODO Muestra todos los docuemntos de la colleccion
-  public static void showAllDocuments(
-      final MongoCollection<Document> collection) {
+  public static void showAllDocuments(final MongoCollection<Document> collection) {
+	  
     System.out.println("----[Muestra todos lod documentos en la coleccion inventory]----");
     for (Document doc : collection.find()) {
     	System.out.println(doc.toJson());

@@ -20,7 +20,7 @@
 			<a href="usuarios.jsp"><img src="../imagenes/photo.png"  height="230" width="230" class="w3-circle" alt="Norway"><h2>Usuarios</h2></a>
 		</div>
 		<div class="w3-col w3-container w3-hover-opacity" style="width:25%; cursor:pointer;">
-			<a href="#"><img src="../imagenes/bookA.png" height="230" width="230" class="w3-circle" alt="Norway"><h2>Libros</h2></a>
+			<a href="libros.jsp"><img src="../imagenes/bookA.png" height="230" width="230" class="w3-circle" alt="Norway"><h2>Libros</h2></a>
 		</div>
 		<div class="w3-col w3-container w3-hover-opacity" style="width:25%; cursor:pointer;">
 			<a href="#"><img src="../imagenes/eye.png" height="230" width="230" class="w3-circle" alt="Norway"><h2>Ver multas</h2></a>

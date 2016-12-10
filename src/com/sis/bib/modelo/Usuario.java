@@ -2,6 +2,8 @@ package com.sis.bib.modelo;
 
 import java.io.Serializable;
 
+import org.bson.types.ObjectId;
+
 public class Usuario implements Serializable{
 
 	/**
@@ -9,7 +11,8 @@ public class Usuario implements Serializable{
 	 */
 	private static final long serialVersionUID = -2542406411872025931L;
 	
-	private int idUser;
+	private ObjectId _id;
+	private String _idAsStr;
 	private String nombre;
 	private String aPaterno;
 	private String aMaterno;
@@ -30,11 +33,17 @@ public class Usuario implements Serializable{
 	
 	
 	
-	public int getIdUser() {
-		return idUser;
+	public String get_idAsStr() {
+		return _idAsStr;
 	}
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
+	public void set_idAsStr(String _idAsStr) {
+		this._idAsStr = _idAsStr;
+	}
+	public ObjectId get_id() {
+		return _id;
+	}
+	public void set_id(ObjectId _id) {
+		this._id = _id;
 	}
 	public String getNombre() {
 		return nombre;

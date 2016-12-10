@@ -11,11 +11,20 @@
   
     <package name="default"  extends="struts-default" namespace="/">
 		
-		<action name="Welcome" class="com.sis.bib.action.WelcomeUserAction">
-			<result name="SUCCESS">index.jsp</result>
+		<action name="loadAll" class="com.sis.bib.action.UsuarioAction" method="loadAll">
 		</action>
 		
 		<action name="crearUsuario" class="com.sis.bib.action.UsuarioAction" method="crearUsuario">
+		</action>
+		
+		<action name="verficaMail" class="com.sis.bib.action.UsuarioAction" method="verficaMail">
+		</action>
+		
+<!-- 		Libros -->
+		<action name="crearLibro" class="com.sis.bib.action.LibroAction" method="crearLibro">
+		</action>
+		
+		<action name="loadAllBooks" class="com.sis.bib.action.LibroAction" method="loadAllBooks">
 		</action>
 		
 	</package>
