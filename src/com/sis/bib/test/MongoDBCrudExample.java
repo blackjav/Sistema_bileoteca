@@ -203,8 +203,7 @@ public class MongoDBCrudExample {
     return status;
   }
  
-  public static boolean updateCollection(
-      final MongoCollection<Document> collection, final Item item) {
+  public static boolean updateCollection(final MongoCollection<Document> collection, final Item item) {
     boolean status = true;
     ObjectMapper mapper = new ObjectMapper();
     String jsonString;
@@ -212,14 +211,12 @@ public class MongoDBCrudExample {
     try {
       jsonString = mapper.writeValueAsString(item);
       // update/upsert using JSON into MongoDB
-      System.out.println(String.format("Item #%s: %s", item.getId(),
-          jsonString));
+      System.out.println(String.format("Item #%s: %s", item.getId(),jsonString));
       BasicDBObject query = new BasicDBObject();
       query.append("_id", item.getId());
       BasicDBObject doc = BasicDBObject.parse(jsonString);
       Bson newDocument = new Document("$set", doc);
-      UpdateResult result = collection.updateOne(query, newDocument,
-          (new UpdateOptions()).upsert(true));
+      UpdateResult result = collection.updateOne(query, newDocument,(new UpdateOptions()).upsert(true));
       System.out.println("Update Matched Count....: "+ result.getMatchedCount());
       System.out.println("Update Modified Count...: "+ result.getModifiedCount());
     } catch (MongoWriteException mwe) {

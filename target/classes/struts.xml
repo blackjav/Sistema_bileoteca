@@ -27,6 +27,16 @@
 		<action name="loadAllBooks" class="com.sis.bib.action.LibroAction" method="loadAllBooks">
 		</action>
 		
+<!-- 		Prestamos -->
+		<action name="loadAllUsers" class="com.sis.bib.action.PrestamoAction" method="loadAllUsers">
+		</action>
+		
+		<action name="loadLibrosDisponibles" class="com.sis.bib.action.PrestamoAction" method="loadDisponibleLibros">
+		</action>
+		
+		<action name="generarPrestamo" class="com.sis.bib.action.PrestamoAction" method="generarPrestamo">
+		</action>
+		
 	</package>
 
 </struts>

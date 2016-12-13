@@ -23,10 +23,10 @@
 			<a href="libros.jsp"><img src="../imagenes/bookA.png" height="230" width="230" class="w3-circle" alt="Norway"><h2>Libros</h2></a>
 		</div>
 		<div class="w3-col w3-container w3-hover-opacity" style="width:25%; cursor:pointer;">
-			<a href="#"><img src="../imagenes/eye.png" height="230" width="230" class="w3-circle" alt="Norway"><h2>Ver multas</h2></a>
+			<a href="prestamo.jsp"><img src="../imagenes/eye.png" height="230" width="230" class="w3-circle" alt="Norway"><h2>Generar Prestamo</h2></a>
 		</div>
 		<div class="w3-col w3-container w3-hover-opacity" style="width:25%; cursor:pointer;">
-			<a href="#"><img src="../imagenes/images.jpg" height="230" width="230" class="w3-circle" alt="Norway"><h2>NOSE</h2></a>
+			<a href="#"><img src="../imagenes/images.jpg" height="230" width="230" class="w3-circle" alt="Norway"><h2>Prestamos / multas</h2></a>
 		</div>
 	</div>
 	

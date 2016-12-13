@@ -9,4 +9,6 @@ public interface LibroDao {
 	public ServiceResponse upateLibro(Libro l);
 	public ServiceResponse findOneLibro(Libro l);
 	public ServiceResponse findAllLibro(Libro l);
+	public ServiceResponse findAllLibroById(Libro l);
+	public ServiceResponse findAllLibroDisponible(Libro l);
 }

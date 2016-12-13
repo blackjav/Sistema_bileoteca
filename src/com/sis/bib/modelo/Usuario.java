@@ -30,6 +30,9 @@ public class Usuario implements Serializable{
 	private String tipoUsuario;
 	private String pass1;
 	private String pass2;
+	private int prestados;
+	private int multas;
+	private float multa;
 	
 	
 	
@@ -152,8 +155,23 @@ public class Usuario implements Serializable{
 		// TODO Auto-generated method stub
 		return super.toString();
 	}
+	public int getPrestados() {
+		return prestados;
+	}
+	public void setPrestados(int prestados) {
+		this.prestados = prestados;
+	}
+	public int getMultas() {
+		return multas;
+	}
+	public void setMultas(int multas) {
+		this.multas = multas;
+	}
+	public float getMulta() {
+		return multa;
+	}
+	public void setMulta(float multa) {
+		this.multa = multa;
+	}
 		
-		
-	
-
 }

@@ -74,6 +74,9 @@ public class UsuarioAction extends SisBibAction {
 		ServiceResponse sr = null;
 		List<Usuario> user= null;
 		try{
+			usuario.setMulta(0.0f);
+			usuario.setPrestados(0);
+			usuario.setMultas(0);
 			sr = usuarioDao.createUser(usuario);
 			if(sr.isSuccess()){
 				sr = usuarioDao.findAllUser(null);

@@ -15,6 +15,8 @@ function loadAll(){
 			if(jsonResponse.success){
 				obj = jsonResponse.result;
 				printTable(obj);
+			}else{
+				console.log("sdsadfsa")
 			}
 			
 		},
@@ -22,8 +24,6 @@ function loadAll(){
 			alert("Error")
 		}
 	});
-	
-	
 }
 
 function printTable(element){

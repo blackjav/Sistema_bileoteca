@@ -9,4 +9,6 @@ public interface UsuarioDao {
 	public ServiceResponse updateUser(Usuario u);
 	public ServiceResponse findOneUser(Usuario u);
 	public ServiceResponse findAllUser(Usuario u);
+	public ServiceResponse findAllUserByDisponible(Usuario u);
+	public ServiceResponse findAllUserById(Usuario u);
 }
