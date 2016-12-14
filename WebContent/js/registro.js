@@ -37,7 +37,7 @@ function printTablePrestamos(element){
 			tabLine += "<tr '>";
 			tabLine += "<td> "+element[i].nombreUsuario+"</td>"
 			tabLine += "<td> "+element[i].nombreLibro+"</td>";
-			tabLine += "<td> "+element[i].fechaFin +"</td>";
+			tabLine += "<td> "+element[i].fechaInicio +"</td>";
 			tabLine += "<td> "+element[i].fechaFin +"</td>";
 			tabLine += "<td> "+element[i].multa +"</td>";
 			tabLine += "<td> <button type='button'id='btn' onclick='regresarLibro(this);'>Regresar</button> </td>";
