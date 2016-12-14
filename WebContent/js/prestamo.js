@@ -3,11 +3,12 @@ $( document ).ready(function() {
 	loadAllUsers();
 	
 	$( function() {
-	    $( "#datepickerIn" ).datepicker();
+	    $( "#datepickerIn" ).datepicker({ dateFormat: 'dd/mm/yy' });
 	  } );
 	
 	$( function() {
-	    $( "#datepickerFn" ).datepicker();
+	    $( "#datepickerFn" ).datepicker({ dateFormat: 'dd/mm/yy' });
+	    
 	  } );
     	
 });

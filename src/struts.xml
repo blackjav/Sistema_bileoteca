@@ -37,6 +37,9 @@
 		<action name="generarPrestamo" class="com.sis.bib.action.PrestamoAction" method="generarPrestamo">
 		</action>
 		
+		<action name="loadAllPrestamos" class="com.sis.bib.action.PrestamoAction" method="loadAllRegistros">
+		</action>
+		
 	</package>
 
 </struts>

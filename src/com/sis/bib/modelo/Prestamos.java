@@ -10,7 +10,9 @@ public class Prestamos implements Serializable{
 	private static final long serialVersionUID = 1766895812101969235L;
 	private String objID;
 	private String usuarioID;
+	private String nombreUsuario;
 	private String libroID;
+	private String nombreLibro;
 	private String fechaInicio;
 	private String fechaFin;
 	private double multa;
@@ -57,8 +59,17 @@ public class Prestamos implements Serializable{
 	public void setObjID(String objID) {
 		this.objID = objID;
 	}
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+	public String getNombreLibro() {
+		return nombreLibro;
+	}
+	public void setNombreLibro(String nombreLibro) {
+		this.nombreLibro = nombreLibro;
+	}
 	
-	
-	
-
 }

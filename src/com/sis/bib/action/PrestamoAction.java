@@ -114,26 +114,39 @@ public class PrestamoAction extends SisBibAction{
 						l = ls.get(0);
 						int disponibles = l.getExistencia();
 						System.out.println("Se encontro libro con [ "+disponibles +" ] Existencias");
+						
+						prestamo.setNombreUsuario(usuarioToUpdate.getNombre()+" " + usuarioToUpdate.getaPaterno()+" " + usuarioToUpdate.getaMaterno());
+						prestamo.setNombreLibro(l.getTitulo() +" "+ l.getAutor() +" Ed:"+ l.getEditorial());
 						prestamo.setLibroID(s);
-						sr = dao.generarPrestamo(prestamo);
-						if(sr.isSuccess()){
-							disponibles --;
-							System.out.println("Orden genearada...");
-							prestados ++;
-							flag=true;
+						prestamo.setStatus(0);
+						if(disponibles > 0){
+							sr = dao.generarPrestamo(prestamo);
+							if(sr.isSuccess()){
+								disponibles --;
+								System.out.println("Orden genearada...");
+								prestados ++;
+								flag=true;
+								
+							}else{
+								throw new Exception("Error al insertar una fila");
+							}
 							
+							l.setExistencia(disponibles);
+							System.out.println("Se actualizaron existencias del libro a "+disponibles);
+							libroDao.upateLibro(l);
 						}else{
-							throw new Exception("Error al insertar una fila");
+							flag = false;
 						}
 						
-						l.setExistencia(disponibles);
-						System.out.println("Se actualizaron existencias del libro a "+disponibles);
-						libroDao.upateLibro(l);
+						
+					}else{
+						System.out.println("Algo salio mal al buscar el libr");
 					}
 					
 					
 				}else{
 					//mandar error de que ya no se le puede prestar a este wey
+					flag =false;
 				}
 			}
 			if(flag){
@@ -141,6 +154,7 @@ public class PrestamoAction extends SisBibAction{
 				u.setPrestados(prestados);
 				System.out.println("total prestados "+prestados);
 				ServiceResponse sus = userDao.updateUser(u);
+				
 				if(sus.isSuccess()){
 					System.out.println("USUARIO INSERTADO");
 					List<Usuario> userUp = null;
@@ -154,7 +168,7 @@ public class PrestamoAction extends SisBibAction{
 							sendJSONObjectToResponse(nuevaLista);
 						}else{
 							nuevaLista.setSuccess(false);
-							nuevaLista.setMensaje("no");
+							nuevaLista.setMensaje("Algo salio mal al guardar los libros revise disponibilidad y existencia");
 							nuevaLista.setResult(0);
 							sendJSONObjectToResponse(nuevaLista);
 						}
@@ -170,6 +184,30 @@ public class PrestamoAction extends SisBibAction{
 		}catch(Exception e ){
 			e.printStackTrace();
 		}
+		return null;
+	}
+	
+	public String loadAllRegistros(){
+		PrestamoDao dao = new PrestamosDaoImpl();
+		ServiceResponse sr = new  ServiceResponse();
+		List<Prestamos> prestamos = null;
+		try{
+			sr = dao.findAll(null);
+			if(sr.isSuccess()){
+				prestamos = (List<Prestamos>) sr.getResult();
+				sr.setSuccess(true);
+				sr.setMensaje("OK");
+				sr.setResult(prestamos);
+			}else{
+				sr.setResult(0);
+				sr.setSuccess(false);
+				sr.setMensaje("");
+			}
+		}catch(Exception e ){
+			e.printStackTrace();
+		}
+		
+		sendJSONObjectToResponse(sr);
 		return null;
 	}
 
