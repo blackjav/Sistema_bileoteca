@@ -7,7 +7,9 @@
 	background: url(../imagenes/user.jpg) no-repeat; 
 }
 body{
-/* 	background: purple; */
+	 background-image: url("../imagenes/fondo7.jpg");
+	 background-repeat: no-repeat;
+	 background-size:100% 100%;
 }
 
 a:link   

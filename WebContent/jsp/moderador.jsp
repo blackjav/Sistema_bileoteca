@@ -13,8 +13,8 @@
 <link rel="stylesheet" type="text/css" href="../css/help.css">
 <script src="../scripts/jquery.js"></script>
 <script src="../scripts/jquery-ui.js"></script>
-<script src="../js/crearUsuario.js"></script>
-<title>Usuarios</title>
+<script src="../js/moderador.js"></script>
+<title>Moderadores</title>
 <%
  		Map sess = ActionContext.getContext().getSession();
 		if(sess.get("userName")==null){
@@ -26,16 +26,14 @@
 <body>
 <jsp:include page="header.jsp" flush="true"/>
 <div class="w3-container">
-  <h2>Lista de usuarios</h2>
+  <h2>Lista de Moderadores</h2>
   <div  style="overflow:auto;height:55%;">
   <div class="w3-responsive" >
   	<table class="w3-table-all w3-hoverable">
     <thead>
       <tr class="w3-light-blue">
         <th>ID</th>
-        <th>Nombre</th>
-        <th>Dirección</th>
-        <th>Tel. Local</th>
+        <th>UserName</th>
         <th>Email</th>
       </tr>
     </thead>
@@ -61,7 +59,7 @@
     <div class="w3-modal-content w3-animate-top w3-card-5" style="width:55%">
       <header class="w3-container w3-blue"> 
         <span onclick="popUp(this);"class="w3-closebtn">&times;</span>
-        <h6>Agregar Usuario</h6>
+        <h6>Agregar Moderador</h6>
       </header>
       <div class="w3-responsive">
 	      <div class="w3-container">
@@ -74,18 +72,9 @@
 			      		<div class="w3-row w3-section">
 						  <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
 						    <div class="w3-rest">
-						    	<div class="w3-row-padding">
 						    	
-							    	<div class="w3-third">
-									    <input class="w3-input w3-border"   id="nombre" type="text" placeholder="Nombre(s)">
+									    <input class="w3-input w3-border" style="width:98%;"  id="nombre" type="text" placeholder="Nombre(s)">
 									</div>
-									<div class="w3-third">
-									    <input class="w3-input w3-border"  id="aPaterno" type="text" placeholder="Apellido Paterno">
-									</div>
-									<div class="w3-third">
-									    <input class="w3-input w3-border" id="aMaterno" type="text" placeholder="Apellido Materno">
-									</div>
-								</div>
 						      
 						    </div>
 						</div>
@@ -101,70 +90,6 @@
 						</div>
 					</div>
 					
-					
-<!-- 					Telefono / movil -->
-					<div class="w3-row-padding">
-						<div class="w3-half">
-						  <div class="w3-row w3-section">
-						  	<div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-phone"></i></div>
-						    	<div class="w3-rest">
-							    	<div class="w3-row-padding">
-							    		<input class="w3-input w3-border" id="telefono" type="text" placeholder="Telefono">
-							    	</div>
-						    	</div>
-							</div>  	
-				    	</div>
-				    	<div class="w3-half">
-				    		<div class="w3-row w3-section">
-						  		<div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-mobile"></i></div>
-						    		<div class="w3-rest">
-							    			<input class="w3-input w3-border" id="movil" type="text" placeholder="Movil">
-						    		</div>
-							</div>
-			    		</div>
-		    		</div>
-		    		
-<!-- 		    		noext noint calle -->
-		    		<div class="w3-row-padding">
-			    		<div class="w3-row w3-section">
-						  <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-home"></i></div>
-						    <div class="w3-rest">
-						    	<div class="w3-row-padding">
-							    	<div class="w3-third">
-									    <input type="number"name="usuario.noExt" id="noExt" class="w3-input w3-border"  placeholder="No. Ext"/>
-									</div>
-									<div class="w3-third">
-									    <input type="number" name="usuario.noInt" id="noInt" class="w3-input w3-border" placeholder="No. Int"/>
-									</div>
-									<div class="w3-third">
-									   <input type="text" name="usuario.calle" id="calle" class="w3-input w3-border" placeholder="Calle"/>
-									</div>
-								</div>
-						      
-						    </div>
-						</div>
-					</div>
-					
-<!-- 					Colonia cṕ delegacion -->
-					<div class="w3-row-padding">
-			    		<div class="w3-row w3-section">
-						  <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-home"></i></div>
-						    <div class="w3-rest">
-						    	<div class="w3-row-padding">
-							    	<div class="w3-third">
-									    <input type="text" name="usuario.colonia" id="colonia" class="w3-input w3-border"  placeholder="Colonia"/>
-									</div>
-									<div class="w3-third">
-									    <input type="number" name="usuario.cp" id="cp" class="w3-input w3-border"  placeholder="Codigo Postal"/>
-									</div>
-									<div class="w3-third">
-									   <input type="text" name="usuariomunicipio" id="municipio" class="w3-input w3-border"  placeholder="Delegacion / Municipio"/>
-									</div>
-								</div>
-						      
-						    </div>
-						</div>
-					</div>
 					
 <!-- 					contraseñas  -->
 					<div class="w3-row-padding">

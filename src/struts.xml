@@ -40,6 +40,27 @@
 		<action name="loadAllPrestamos" class="com.sis.bib.action.PrestamoAction" method="loadAllRegistros">
 		</action>
 		
+		<action name="regresarLibro" class="com.sis.bib.action.PrestamoAction" method="regresarLibro">
+		</action>
+		
+		
+<!-- 		Moderador -->
+
+		<action name="loadAllM" class="com.sis.bib.action.ModeradorAction" method="loadAll">
+		</action>
+		
+		<action name="verficaMail" class="com.sis.bib.action.ModeradorAction" method="verficaMail">
+		</action>
+		
+		<action name="crearUsuario" class="com.sis.bib.action.ModeradorAction" method="crearUsuario">
+		</action>
+		
+		<action name="login" class="com.sis.bib.action.ModeradorAction" method="login">
+		</action>
+		
+		<action name="cerrarSession" class="com.sis.bib.action.ModeradorAction" method="cerrarSession">
+		</action>
+		
 	</package>
 
 </struts>

@@ -42,6 +42,8 @@ public class LibroDaoImpl implements LibroDao{
 	    } catch (MongoWriteException mwe) {
 	        status = false;
 	        mwe.printStackTrace();
+	    }finally{
+	    	mongoClient.close();
 	    }
 	    
 	    if(status){

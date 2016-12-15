@@ -1,3 +1,5 @@
+<%@page import="com.opensymphony.xwork2.ActionContext"%>
+<%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
@@ -14,6 +16,13 @@
 <script src="../js/prestamo.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <title>Prestamos</title>
+<%
+ 		Map sess = ActionContext.getContext().getSession();
+		if(sess.get("userName")==null){
+			response.sendRedirect("main.jsp");
+		}
+		
+%>
 </head>
 <body>
 <jsp:include page="header.jsp" flush="true"/>
@@ -40,6 +49,11 @@
 	   </table>
 	  </div>
  </div>
+</div>
+
+<div class="w3-padding w3-clear">
+  <a class="w3-btn-floating-large w3-left w3-blue" href="menu.jsp"><<<</a>
+  <p id="mensaje" style="width:30%; margin-right: 20px; padding-bottom: 8px; padding-top: 15px; display:none"></p>
 </div>
 
 <!-- Dialogo -->

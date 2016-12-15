@@ -24,6 +24,10 @@ public class PrestamoAction extends SisBibAction{
 	private Prestamos prestamo;
 	private List<String> listLibros = new ArrayList<String>();
 	private int prestados;
+	private String libID;
+	private String userID;
+	private String idPrestamo;
+	private String fechaActual;
 
 	public String loadAllUsers(){
 		UsuarioDao dao = new UsuarioDaoImpl();
@@ -188,6 +192,8 @@ public class PrestamoAction extends SisBibAction{
 	}
 	
 	public String loadAllRegistros(){
+		
+		System.out.println("LA fecha actual es ---- "+fechaActual);
 		PrestamoDao dao = new PrestamosDaoImpl();
 		ServiceResponse sr = new  ServiceResponse();
 		List<Prestamos> prestamos = null;
@@ -208,6 +214,93 @@ public class PrestamoAction extends SisBibAction{
 		}
 		
 		sendJSONObjectToResponse(sr);
+		return null;
+	}
+	
+	public String regresarLibro(){
+		Usuario user = new Usuario();
+		UsuarioDao userDao = new UsuarioDaoImpl();
+		LibroDao libroDao = new LibroDaoImpl();
+		PrestamoDao dao = new PrestamosDaoImpl();
+		ServiceResponse responseUser = null;
+		ServiceResponse response = null;
+		
+		try{
+			
+			//info usuario 
+			user.set_idAsStr(userID);
+			responseUser = userDao.findAllUserById(user);
+			List<Usuario> listUser = (List<Usuario>) responseUser.getResult();
+			user = listUser.get(0);
+			
+			//info libro
+			Libro libro = new Libro();
+			libro.setIdAsStr(libID);
+			ServiceResponse libroResponse = libroDao.findAllLibroById(libro);
+			List<Libro> ls =  (List<Libro>) libroResponse.getResult();
+			libro = ls.get(0);
+			
+			int disponible = user.getPrestados();
+			int disLast = disponible;
+			int existencias = libro.getExistencia();
+			int exisLast = existencias;
+			
+			System.out.println("Se va a aumentar disponibles = "+disponible +" Y existencias = "+existencias);
+			disponible --;
+			existencias ++;
+			
+			//Actualizar datos de libro y usuario
+			user.setPrestados(disponible);
+			libro.setExistencia(existencias);
+			ServiceResponse srU = userDao.updateUser(user);
+			ServiceResponse srL = libroDao.upateLibro(libro);
+			
+			if(!srU.isSuccess() || !srL.isSuccess()){
+				System.out.println("No se pudo actualizar un dato");
+				System.out.println("Usuario "+srU.isSuccess());
+				System.out.println("Libro "+srL.isSuccess());
+				srU.setResult(0);
+				srU.setSuccess(false);
+				srU.setMensaje("");
+				response = srU;
+			}else{
+				System.out.println("Se va a actualizar Usaurio [ "+user.get_idAsStr()+" ] que paso de tener [ "+disLast+" ] libros disponibles a [ "+disponible+" ]");
+				System.out.println("Se va a actualizar Libro [ "+libro.getIdAsStr()+" ] que paso de tener [ "+exisLast+" ] existencias disponibles a [ "+existencias+" ]");
+				
+				System.out.println("Actualizar datos de prestamo..... ID [ "+idPrestamo+" ]");
+				Prestamos prestamo = new Prestamos();
+				prestamo.setStatus(2);
+				prestamo.setObjID(idPrestamo);
+				ServiceResponse srP = dao.actualizarPrestamo(prestamo);
+				if(srP.isSuccess()){
+					ServiceResponse srView = dao.findAll(null);
+					if(srView.isSuccess()){
+						List <Prestamos> prestamoList = (List<Prestamos>) srView.getResult();
+						srView.setSuccess(true);
+						srView.setMensaje("OK");
+						srView.setResult(prestamoList);
+						response = srView;
+						System.out.println("TODO OKs");
+					}else{
+						srView.setResult(0);
+						srView.setSuccess(false);
+						srView.setMensaje("");
+						response = srView;
+					}
+				}else{
+					srP.setResult(0);
+					srP.setSuccess(false);
+					srP.setMensaje("");
+					response = srP;
+				}
+				
+				
+			}
+			
+		}catch(Exception e ){
+			e.printStackTrace();
+		}
+		sendJSONObjectToResponse(response);
 		return null;
 	}
 
@@ -241,4 +334,43 @@ public class PrestamoAction extends SisBibAction{
 		this.prestados = prestados;
 	}
 
+
+	public String getLibID() {
+		return libID;
+	}
+
+
+	public void setLibID(String libID) {
+		this.libID = libID;
+	}
+
+
+	public String getUserID() {
+		return userID;
+	}
+
+
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+
+
+	public String getIdPrestamo() {
+		return idPrestamo;
+	}
+
+
+	public void setIdPrestamo(String idPrestamo) {
+		this.idPrestamo = idPrestamo;
+	}
+
+
+	public String getFechaActual() {
+		return fechaActual;
+	}
+
+
+	public void setFechaActual(String fechaActual) {
+		this.fechaActual = fechaActual;
+	}
 }
