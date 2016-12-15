@@ -43,6 +43,7 @@ function printTablePrestamos(element){
 			tabLine += "<td id='x"+[i]+"_FechaFIn'> "+element[i].fechaFin +"</td>";
 			tabLine += "<td id='x"+[i]+"_Multa'> $ "+element[i].multa +"</td>";
 			tabLine += "<td> <button type='button' id='x"+[i]+"_Btn' name ='"+element[i].objID+"' onclick='regresarLibro(this);'>Regresar</button> </td>";
+
 			tabLine += "</tr>";
 			
 		}
